@@ -451,6 +451,7 @@ body {
 .site-footer .container {
   padding-top: 1.5rem;
   padding-bottom: 2rem;
+  text-align: center;
 }
 
 /* ---------- Small screens ---------- */
