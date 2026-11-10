@@ -63,11 +63,10 @@
     #1 & #2
   \end{tabularx}\par\vspace{2pt}}
 
-% \paper[authorship]{Title}{PDF link (may be empty)}{Status / notes}
+% \paper[authorship]{Title}{PDF link for the (black) title, may be empty}{Status / notes}
 \newcommand{\paper}[4][]{%
   \par\noindent``\if\relax\detokenize{#3}\relax #2\else\href{#3}{\color{black}#2}\fi.''%
   \if\relax\detokenize{#1}\relax\else\ {\color{muted}(#1)}\fi
-  \if\relax\detokenize{#3}\relax\else\ {\color{muted}\textperiodcentered}\ \href{#3}{PDF}\fi
   \par\nopagebreak
   {\color{muted}\small #4\par}
   \vspace{6pt}}
