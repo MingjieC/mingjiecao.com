@@ -1,0 +1,10 @@
+.claude/
+.DS_Store
+# CV build output and older CV versions (keep private)
+cv/build/
+cv/*.pdf
+cv/*.JPG
+cv/*.jpg
+cv/*.jpeg
+cv/*.png
+cv/*.HEIC

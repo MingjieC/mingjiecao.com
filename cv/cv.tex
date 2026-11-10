@@ -1,0 +1,195 @@
+% ==========================================================
+%  Curriculum Vitae — Mingjie Cao
+%  Build:  ./cv/build.sh   (writes files/Mingjie_Cao_CV.pdf)
+% ==========================================================
+\documentclass[letterpaper]{article}
+\usepackage[fontsize=11pt]{scrextend}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lining]{ebgaramond}
+\usepackage[letterspace=60]{microtype}
+\usepackage[margin=0.75in,top=0.6in,bottom=0.7in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[hidelinks]{hyperref}
+\usepackage{needspace}
+\usepackage{etoolbox}
+
+% ---------- Colors (match the website) ----------
+\definecolor{accent}{HTML}{1F4277}
+\definecolor{rule}{HTML}{B9BEC7}
+\definecolor{muted}{HTML}{5D6470}
+
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
+% ---------- Page style ----------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{muted}Mingjie Cao \textperiodcentered{} Curriculum Vitae \textperiodcentered{} November 2026}
+\fancyfoot[R]{\footnotesize\color{muted}Page \thepage{} of \pageref*{LastPage}}
+
+% ---------- Section headings ----------
+\newcommand{\sectitle}[1]{\textls{\MakeUppercase{#1}}}
+\titleformat{\section}
+  {\normalfont\small\bfseries\color{accent}}
+  {}{0pt}{\sectitle}
+  [{\color{rule}\vspace{-6pt}\rule{\linewidth}{0.5pt}}]
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+% Never leave a section heading alone at the bottom of a page
+\pretocmd{\section}{\needspace{5\baselineskip}}{}{}
+
+% ---------- Entry macros ----------
+% \entry{Bold heading}{Date}{Italic description (may be empty)}
+\newcommand{\entry}[3]{%
+  \par\noindent
+  \begin{tabularx}{\linewidth}{@{}X@{\hspace{1.5em}}r@{}}
+    \textbf{#1} & #2
+  \end{tabularx}\par\nopagebreak
+  \if\relax\detokenize{#3}\relax\else{\itshape #3\par}\fi
+  \vspace{3pt}}
+
+% \award{Description}{Year}
+\newcommand{\award}[2]{%
+  \par\noindent
+  \begin{tabularx}{\linewidth}{@{}X@{\hspace{1.5em}}r@{}}
+    #1 & #2
+  \end{tabularx}\par\vspace{2pt}}
+
+% \paper[authorship]{Title}{Status / notes}
+\newcommand{\paper}[3][]{%
+  \par\noindent``#2.''\if\relax\detokenize{#1}\relax\else\ {\color{muted}(#1)}\fi\par\nopagebreak
+  {\color{muted}\small #3\par}
+  \vspace{6pt}}
+
+\setlist[itemize]{leftmargin=1.2em, itemsep=1pt, topsep=2pt, label=\textbullet}
+
+% ==========================================================
+\begin{document}
+
+% ---------- Header ----------
+\begin{center}
+  {\fontsize{24}{28}\selectfont\color{accent}Mingjie Cao}\par\vspace{6pt}
+  Ph.D. Student in Accounting, Desautels Faculty of Management, McGill University\par\vspace{4pt}
+  {\small\color{muted}
+    Montreal, QC \textperiodcentered{} Canadian citizen\par
+    \href{mailto:mingjie.cao@mail.mcgill.ca}{mingjie.cao@mail.mcgill.ca} \textperiodcentered{}
+    \href{https://www.mingjiecao.com}{www.mingjiecao.com} \textperiodcentered{}
+    \href{https://www.linkedin.com/in/mingjiecao}{linkedin.com/in/mingjiecao}\par}
+\end{center}
+\vspace{2pt}
+
+% ---------- Education ----------
+\section{Education}
+
+\entry{McGill University, Desautels Faculty of Management}{2024--present}
+  {Ph.D. in Management (Accounting). Montreal, QC.}
+\entry{University of Toronto (St.\ George)}{2022--2023}
+  {M.A. in Economics. Toronto, ON.}
+\entry{Université de Montréal}{2018--2022}
+  {Honours B.Sc. in Economics. Montreal, QC.}
+
+% ---------- Research ----------
+\section{Research}
+
+\textbf{Research interests:} Political economy in accounting and finance.\par\vspace{2pt}
+\textbf{Methods:} Textual analysis, econometrics, machine learning.
+\par\vspace{8pt}
+
+\textbf{Working papers}\par\vspace{3pt}
+\paper[sole-authored]{Do Analysts Understand Geopolitics? Evidence from Foreign Demand Shocks}
+  {Presented at McGill University, Desautels Faculty of Management, 2026.}
+
+\paper[sole-authored]{Measuring Firm-Level Geopolitical Exposure}
+  {Presented at the 12th Annual International Corporate Governance Society (ICGS) Conference, 2026
+   (nominated for the Best Paper Award); McGill University, Desautels Faculty of Management, 2025.}
+
+
+% ---------- Research experience ----------
+\section{Research Experience}
+
+\entry{University of Toronto, Rotman School of Management}{Mar 2023--Sep 2023}
+  {Graduate Research Assistant, supervised by Professor Ole-Kristian Hope.}
+\vspace{-2pt}
+Compiled and verified corporate diversity disclosure data for hundreds of Canadian firms;
+proofread and refined the manuscript.\par\vspace{2pt}
+{\small\color{muted}Project: Bourveau, T., X.\ Gao, and O.-K.\ Hope,
+``\href{https://doi.org/10.1111/1911-3846.70018}{The Impact of Disclosure on Diversity: Evidence from the
+\emph{Canada Business Corporations Act}},'' \emph{Contemporary Accounting Research} (2026).\par}
+
+% ---------- Honours ----------
+\section{Honours, Awards, and Fellowships}
+
+\award{Best Paper Award Nominee, 12th Annual ICGS Conference.}{2026}
+\award{Bertram Scholarship, Canadian Foundation for Governance Research (\$20,000).}{2026}
+\award{Friends of McGill Fellowship, McGill University (\$10,000).}{2026}
+\award{Graduate Excellence Award, McGill University (\$9,100).}{2024--2026}
+\award{Marcel Desautels Doctoral Fellowship in Management, McGill University (\$7,500).}{2025}
+\award{Rathlyn Foundation Fellowship, McGill University (\$18,900).}{2024}
+\award{Edith and Norman Strauss Fellowship, McGill University (\$6,100).}{2024}
+\award{Entrance Award, University of Toronto (\$9,000).}{2022}
+\award{Mention of Excellence; Dean's List, Université de Montréal.}{2018--2022}
+\award{Jean-Marie-Dufour Prize in Econometrics, Université de Montréal (\$1,000).}{2021}
+
+% ---------- Conferences ----------
+\section{Conferences and Academic Events}
+
+\entry{41st Contemporary Accounting Research Conference and Doctoral Consortium}{Oct 22--24, 2026}
+  {Participant. Conference at UQÀM; doctoral consortium at McGill University.}
+\entry{12th Annual International Corporate Governance Society (ICGS) Conference and CGIR Junior Scholar Consortium}{Oct 2--4, 2026}
+  {Presenter, ``Measuring Firm-Level Geopolitical Exposure.'' Participant, CGIR Junior Scholar
+   Consortium and Paper Development Workshop. HEC Montréal.}
+\entry{6th Joint Ph.D. Program Symposium for Doctoral Students in Accounting}{Nov 21, 2025}
+  {Participant. John Molson School of Business, Concordia University.}
+\entry{McGill Accounting Research Conference (MARC) and Doctoral Consortium}{Jun 6--7, 2025}
+  {Participant. Desautels Faculty of Management, McGill University.}
+\entry{Montreal Accounting Ph.D. Forum}{Nov 15, 2024}
+  {Participant. Desautels Faculty of Management, McGill University.}
+
+% ---------- Teaching ----------
+\section{Teaching Experience}
+
+\entry{McGill University, Desautels Faculty of Management}{Jan 2025--Dec 2025}
+  {Graduate Teaching Assistant: Financial Accounting.}
+\entry{University of Toronto}{Sep 2022--May 2023}
+  {Graduate Teaching Assistant: Data Analysis and Applied Econometrics; Principles of Macroeconomics;
+   Quantitative Methods in Economics.}
+\entry{Université de Montréal}{Sep 2021--Feb 2022}
+  {Teaching Assistant: Mathematics for Economists.}
+\entry{AÉÉSÉUM (Economics Students' Association, Université de Montréal)}{Sep 2021--Jan 2022}
+  {Teaching Assistant: Mathematics for Economists.}
+
+% ---------- Skills ----------
+\section{Technical Skills and Training}
+
+\textbf{Programming:} Python, R, Stata, MATLAB, SQL, LaTeX.\par\vspace{2pt}
+\textbf{Training:} Machine Learning Specialization (Stanford Online and DeepLearning.AI);
+Machine Learning with Python (IBM); R Programming (Johns Hopkins University);
+Linear Regression and Modeling and Behavioral Finance (Duke University);
+Bloomberg Market Concepts and Bloomberg ESG (Bloomberg).
+
+% ---------- Professional ----------
+\section{Professional and Volunteer Experience}
+
+\entry{Jarislowsky, Fraser Limited}{May 2022--Aug 2022}
+  {Institutional Intern. Montreal, QC.}
+\entry{Great Power Geopolitics}{Apr 2022--May 2023}
+  {Founder. Independent publication on great-power geopolitics.}
+\entry{Nature Simulation Systems}{2017--2020}
+  {Patent Assistant. Montreal, QC.}
+\entry{CHU Sainte-Justine}{May 2015--Aug 2015}
+  {Volunteer. Montreal, QC.}
+
+% ---------- Languages ----------
+\section{Languages}
+
+English and French (native or bilingual); Mandarin Chinese (professional working proficiency).
+
+\end{document}

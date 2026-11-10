@@ -1,0 +1,504 @@
+/* ==========================================================
+   Personal academic website — shared styles
+   Change the look of the whole site by editing the tokens
+   in :root below (colors, fonts, widths).
+   ========================================================== */
+
+:root {
+  /* Colors (light) */
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5d6470;
+  --accent: #1f4277;
+  --accent-soft: #e8eef7;
+  --rule: #e3e0d8;
+
+  /* Type */
+  --font-serif: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* Layout */
+  --measure: 46rem;
+  --gutter: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --surface: #1c1f23;
+    --text: #e7e5e0;
+    --muted: #9ba1ab;
+    --accent: #93b4e6;
+    --accent-soft: #1f2a3a;
+    --rule: #2c3036;
+  }
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: 1.25rem; /* Garamond runs small, so the body is set a little larger */
+  font-variant-numeric: lining-nums;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  text-decoration-color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2.25rem;
+  margin: 0 0 0.25rem;
+}
+
+h2 {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 3rem 0 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.3rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 0 4rem;
+}
+
+/* Faint dotted world map behind the top of the page, tilted back
+   like a map lying on a table seen from its bottom-left corner.
+   opacity = strength; rotateX = how steeply it leans away;
+   rotateZ = how much it turns (negative lifts the right side). */
+.world-map-wrap {
+  position: fixed; /* stays on screen; a small script lets it drift as the page scrolls */
+  will-change: transform;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38rem;
+  overflow: hidden;
+  perspective: 1000px;
+  perspective-origin: 50% 0%;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+}
+
+.world-map {
+  position: absolute;
+  left: 50%;
+  bottom: 3rem;
+  width: min(80rem, 180%);
+  aspect-ratio: 1000 / 383;
+  transform: translateX(-50%) rotateX(36deg) rotateZ(-6deg);
+  transform-origin: 50% 100%;
+  background: var(--accent);
+  opacity: 0.08;
+  -webkit-mask: url("../images/world-map.svg") no-repeat center / 100% 100%;
+  mask: url("../images/world-map.svg") no-repeat center / 100% 100%;
+}
+
+/* Very faint even dot grid continuing below the map. It fades in
+   under the map, fades out toward the bottom of the page, and is
+   lighter behind the text column so reading stays clean. */
+.dot-texture {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1.4px);
+  background-size: 16px 16px;
+  opacity: 0.08;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0, transparent 24rem, #000 40rem, #000 calc(100% - 28rem), transparent 100%),
+    linear-gradient(to right, #000 calc(50% - 30rem), rgba(0,0,0,0.3) calc(50% - 21rem), rgba(0,0,0,0.3) calc(50% + 21rem), #000 calc(50% + 30rem));
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, transparent 0, transparent 24rem, #000 40rem, #000 calc(100% - 28rem), transparent 100%),
+    linear-gradient(to right, #000 calc(50% - 30rem), rgba(0,0,0,0.3) calc(50% - 21rem), rgba(0,0,0,0.3) calc(50% + 21rem), #000 calc(50% + 30rem));
+  mask-composite: intersect;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body {
+  position: relative;
+}
+
+/* ---------- Home: intro ---------- */
+
+.intro {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "photo bio"
+    "links bio";
+  gap: 1.25rem 2.25rem;
+  align-items: start;
+}
+
+.intro .portrait {
+  grid-area: photo;
+}
+
+.intro .bio {
+  grid-area: bio;
+}
+
+.profile-links {
+  grid-area: links;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+.profile-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-links .icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.profile-links a:hover .icon {
+  stroke: var(--accent);
+}
+
+.portrait {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  display: block;
+}
+
+.role {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+}
+
+.notice {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 0.85rem 1rem;
+  border-radius: 0 4px 4px 0;
+  margin: 1.5rem 0;
+}
+
+.notice p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------- Papers ---------- */
+
+.paper {
+  padding: 0 0 1.75rem;
+  margin: 0 0 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.paper:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.paper-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.paper-title a:hover {
+  color: var(--accent);
+}
+
+.paper-authorship {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* Plain-language story behind each paper (research page) */
+.paper-story {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0.4rem 0 0.75rem;
+  padding-left: 1.5rem; /* indent the story under the title */
+}
+
+/* Small italic cue at the top of each story, marking it as my own explanation */
+.paper-story .story-cue {
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.paper-story p {
+  margin: 0 0 0.7rem;
+}
+
+.paper-story p:last-child {
+  margin-bottom: 0;
+}
+
+.paper-meta {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0 0 0.6rem;
+  line-height: 1.5;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.paper-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0 0 0.4rem;
+}
+
+.paper details summary {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.paper details summary::-webkit-details-marker {
+  display: none;
+}
+
+.paper details summary::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.paper details[open] summary::before {
+  transform: rotate(45deg);
+}
+
+/* PDF link sits below the abstract toggle */
+.paper details + .paper-links {
+  margin-top: 0.45rem;
+}
+
+.paper details[open] + .paper-links {
+  margin-top: 1rem;
+}
+
+.paper details p {
+  font-size: 1rem;
+  margin: 0.75rem 0 0;
+  color: var(--text);
+}
+
+
+/* Closing note pointing to the CV */
+.cv-note {
+  font-family: var(--font-sans);
+  font-size: 1.08rem;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ---------- Simple lists (conferences, etc.) ---------- */
+
+.entry-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.entry-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.entry-list li:last-child {
+  border-bottom: 0;
+}
+
+.entry-list .when {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}
+
+.entry-list .detail {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.site-footer .container {
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 640px) {
+  body {
+    font-size: 1.1875rem;
+  }
+
+  h1 {
+    font-size: 1.85rem;
+  }
+
+  main {
+    padding: 2rem 0 3rem;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "photo"
+      "bio"
+      "links";
+    gap: 1.5rem;
+  }
+
+  .profile-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    margin-top: -0.5rem;
+  }
+
+  .portrait {
+    width: 12rem;
+  }
+
+  .paper-story {
+    padding-left: 1rem;
+  }
+
+  .entry-list li {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .entry-list .when {
+    padding-top: 0;
+  }
+}
