@@ -63,10 +63,13 @@
     #1 & #2
   \end{tabularx}\par\vspace{2pt}}
 
-% \paper[authorship]{Title}{Status / notes}
-\newcommand{\paper}[3][]{%
-  \par\noindent``#2.''\if\relax\detokenize{#1}\relax\else\ {\color{muted}(#1)}\fi\par\nopagebreak
-  {\color{muted}\small #3\par}
+% \paper[authorship]{Title}{PDF link (may be empty)}{Status / notes}
+\newcommand{\paper}[4][]{%
+  \par\noindent``\if\relax\detokenize{#3}\relax #2\else\href{#3}{\color{black}#2}\fi.''%
+  \if\relax\detokenize{#1}\relax\else\ {\color{muted}(#1)}\fi
+  \if\relax\detokenize{#3}\relax\else\ {\color{muted}\textperiodcentered}\ \href{#3}{PDF}\fi
+  \par\nopagebreak
+  {\color{muted}\small #4\par}
   \vspace{6pt}}
 
 \setlist[itemize]{leftmargin=1.2em, itemsep=1pt, topsep=2pt, label=\textbullet}
@@ -105,9 +108,11 @@
 
 \textbf{Working papers}\par\vspace{3pt}
 \paper[sole-authored]{Do Analysts Understand Geopolitics? Evidence from Foreign Demand Shocks}
+  {https://mingjiecao.com/files/Cao_Do_Analysts_Understand_Geopolitics.pdf}
   {Presented at McGill University, Desautels Faculty of Management, 2026.}
 
 \paper[sole-authored]{Measuring Firm-Level Geopolitical Exposure}
+  {https://mingjiecao.com/files/Cao_Measuring_Firm-Level_Geopolitical_Exposure.pdf}
   {Presented at the 12th Annual International Corporate Governance Society (ICGS) Conference, 2026
    (nominated for the Best Paper Award); McGill University, Desautels Faculty of Management, 2025.}
 
