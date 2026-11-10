@@ -54,7 +54,7 @@
     \textbf{#1} & #2
   \end{tabularx}\par\nopagebreak
   \if\relax\detokenize{#3}\relax\else{\itshape #3\par}\fi
-  \vspace{3pt}}
+  \vspace{2pt}}
 
 % \award{Description}{Year}
 \newcommand{\award}[2]{%
@@ -170,6 +170,12 @@ proofread and refined the manuscript.\par\vspace{2pt}
 \entry{AÉÉSÉUM (Economics Students' Association, Université de Montréal)}{Sep 2021--Jan 2022}
   {Teaching Assistant: Mathematics for Economists.}
 
+% ---------- Service ----------
+\section{Service}
+
+\entry{\href{https://mtlaccountingphd.club}{\color{black}Montreal Accounting PhD Club}}{2025--present}
+  {Founding President. Club for accounting doctoral students from Montréal's four business schools.}
+
 % ---------- Skills ----------
 \section{Technical Skills and Training}
 
@@ -192,6 +198,8 @@ Bloomberg Market Concepts and Bloomberg ESG (Bloomberg).
   {Volunteer. Montreal, QC.}
 
 % ---------- Languages ----------
+% Short last section: no extra keep-together space needed
+\renewcommand{\needspace}[1]{\Needspace{3\baselineskip}}
 \section{Languages}
 
 English and French (native or bilingual); Mandarin Chinese (professional working proficiency).
