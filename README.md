@@ -10,7 +10,7 @@ A small static site (plain HTML + CSS). No build step: what's in this folder is 
 | `css/style.css` | All styling. Colors and fonts are set at the top in `:root` |
 | `files/` | Public PDFs: `Mingjie_Cao_CV.pdf`, paper drafts, slides |
 | `cv/` | CV source (`cv.tex`). Run `./cv/build.sh` to rebuild `files/Mingjie_Cao_CV.pdf` |
-| `images/` | Portrait photo (`portrait.jpg`, 640×800, location data removed), "MC" tab icons, faint dotted world map (`world-map.svg`, built from public-domain coastline data) |
+| `images/` | Portrait photo (`portrait.jpg`, 640×800, location data removed), "MC" tab icons, faint dotted world map (`world-map.svg`, built from public-domain coastline data), link-preview card (`share.jpg`, 1200×630, shown when the site is shared) |
 | `favicon.ico` | Browser-tab icon ("MC" in Garamond on navy) |
 | `CNAME` | Your custom domain (added when you set up hosting) |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is |
