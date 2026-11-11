@@ -21,12 +21,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
-    // Hide papers until they scroll into view (only when motion is welcome and the browser supports it)
+    // Hide the content below the intro until it scrolls into view (only when motion is welcome)
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('reveal-ready');
     }
   </script>
-  <link rel="stylesheet" href="css/style.css?v=4"><!-- bump v when style.css changes, so browsers fetch the new one -->
+  <link rel="stylesheet" href="css/style.css?v=5"><!-- bump v when style.css changes, so browsers fetch the new one -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -148,23 +148,31 @@
       update();
     })();
 
-    // Papers and the talk photo fade in once as they scroll into view.
+    // The heading, papers, talk photo and CV note rise in once as they scroll into view.
+    // Whatever is already on screen at load follows the intro, one after another.
     // Only runs when the <head> script turned this on (not for reduce-motion visitors).
     (function () {
       if (!document.documentElement.classList.contains('reveal-ready')) return;
-      var items = Array.prototype.slice.call(document.querySelectorAll('.paper, .talk-photo'));
+      var items = Array.prototype.slice.call(document.querySelectorAll('main h2, .paper, .talk-photo, .cv-note'));
+      var firstPass = true;
       function check() {
-        var line = window.innerHeight * 0.92;
+        var line = window.innerHeight * 0.92, n = 0;
         items = items.filter(function (el) {
-          if (el.getBoundingClientRect().top < line) { el.classList.add('is-visible'); return false; }
+          if (el.getBoundingClientRect().top < line) {
+            // On load, start after the intro (0.5s) and step 0.08s per item; later, no delay
+            el.style.setProperty('--reveal-delay', firstPass ? (0.5 + 0.08 * n++) + 's' : '0s');
+            el.classList.add('is-visible');
+            return false;
+          }
           return true;
         });
+        firstPass = false;
         if (!items.length) {
           window.removeEventListener('scroll', check);
           window.removeEventListener('resize', check);
         }
       }
-      // Only three elements to test, so checking on every scroll is cheap
+      // Only a few elements to test, so checking on every scroll is cheap
       window.addEventListener('scroll', check, { passive: true });
       window.addEventListener('resize', check);
       check();
