@@ -547,6 +547,65 @@ body {
   text-align: center;
 }
 
+/* ---------- Gentle motion ----------
+   On load, the intro rises a few pixels and fades in, piece by piece.
+   Papers and the talk photo fade in once as they scroll into view (a
+   script in <head> adds .reveal-ready to <html>, so nothing is hidden
+   if scripts are off).
+   Visitors who ask their device to reduce motion see no animation. */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* No "to" step: fades up to each element's own opacity (the map is 0.08) */
+  @keyframes fade-in {
+    from { opacity: 0; }
+  }
+
+  .world-map-wrap .world-map,
+  .dot-texture {
+    animation: fade-in 1.6s ease-out both;
+  }
+
+  .intro .portrait,
+  .intro .bio > *,
+  .intro .education {
+    animation: rise-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .intro .portrait          { animation-delay: 0.05s; }
+  .intro .bio > h1          { animation-delay: 0.12s; }
+  .intro .bio > .role       { animation-delay: 0.2s; }
+  .intro .bio > .profile-links { animation-delay: 0.28s; }
+  .intro .bio > p:nth-of-type(2) { animation-delay: 0.36s; }
+  .intro .bio > p:nth-of-type(3) { animation-delay: 0.44s; }
+  .intro .education         { animation-delay: 0.4s; }
+
+  .reveal-ready .paper,
+  .reveal-ready .talk-photo {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .reveal-ready .is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Printing: always show everything */
+@media print {
+  .reveal-ready .paper,
+  .reveal-ready .talk-photo {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ---------- Small screens ---------- */
 
 @media (max-width: 640px) {
