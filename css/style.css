@@ -6,13 +6,13 @@
 
 :root {
   /* Colors (light) */
-  --bg: #f4f4f2; /* soft stone gray (was warm cream #fbfaf7) */
+  --bg: #f7f6f3; /* soft warm stone (earlier: cream #fbfaf7, stone gray #f4f4f2) */
   --surface: #ffffff;
   --text: #1f2328;
   --muted: #5d6470;
   --accent: #1f4277;
   --accent-soft: #e8eef7;
-  --rule: #dfdfdb;
+  --rule: #e2e0db;
 
   /* Type */
   --font-serif: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
