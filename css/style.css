@@ -397,6 +397,29 @@ body {
 
 
 /* Closing note pointing to the CV */
+/* ---------- Talk photo (after the papers) ---------- */
+
+.talk-photo {
+  max-width: 34rem;
+  margin: 0 auto 2rem;
+}
+
+.talk-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: var(--accent-soft);
+}
+
+.talk-photo figcaption {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
 .cv-note {
   font-family: var(--font-sans);
   font-size: 1.08rem;
