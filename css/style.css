@@ -283,7 +283,7 @@ body {
   flex-wrap: wrap;
   gap: 0.35rem 1.25rem;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .profile-links a {
