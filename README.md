@@ -6,7 +6,7 @@ A small static site (plain HTML + CSS). No build step: what's in this folder is 
 
 | Path | What it is |
 |---|---|
-| `index.html` | The whole site (one page): photo, bio, links (CV, LinkedIn, email), working papers |
+| `index.html` | The whole site (one page): photo with education timeline, name with contact links (CV, LinkedIn, email), bio, working papers |
 | `css/style.css` | All styling. Colors and fonts are set at the top in `:root` |
 | `files/` | Public PDFs: `Mingjie_Cao_CV.pdf`, paper drafts, slides |
 | `cv/` | CV source (`cv.tex`). Run `./cv/build.sh` to rebuild `files/Mingjie_Cao_CV.pdf` |

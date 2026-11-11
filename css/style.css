@@ -184,9 +184,81 @@ body {
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "photo bio"
-    "links bio";
+    "edu   bio";
   gap: 1.25rem 2.25rem;
   align-items: start;
+}
+
+/* ---------- Education timeline (under the links) ---------- */
+
+.education {
+  grid-area: edu;
+  font-family: var(--font-sans);
+  margin-top: 0.4rem;
+}
+
+.edu-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.edu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.edu-list li {
+  position: relative;
+  padding: 0 0 1rem 1.15rem;
+  line-height: 1.35;
+}
+
+.edu-list li:last-child {
+  padding-bottom: 0;
+}
+
+/* Dot for each degree */
+.edu-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.38em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Thin line joining the dots */
+.edu-list li::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: calc(0.38em + 11px);
+  bottom: 2px;
+  width: 1px;
+  background: var(--rule);
+}
+
+.edu-list li:last-child::after {
+  display: none;
+}
+.edu-degree {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.edu-school {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
 .intro .portrait {
@@ -202,14 +274,14 @@ body {
   font-size: 1.15rem;
 }
 
+/* Contact links: one row under the name and title */
 .profile-links {
-  grid-area: links;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: -0.6rem 0 1.4rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
   font-family: var(--font-sans);
   font-size: 0.9rem;
 }
@@ -496,15 +568,16 @@ body {
     grid-template-areas:
       "photo"
       "bio"
-      "links";
+      "edu";
     gap: 1.5rem;
   }
 
+  .education {
+    margin-top: 0;
+  }
+
   .profile-links {
-    flex-direction: row;
-    flex-wrap: wrap;
     gap: 0.35rem 1.1rem;
-    margin-top: -0.5rem;
   }
 
   .portrait {
