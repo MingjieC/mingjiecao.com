@@ -197,6 +197,11 @@ body {
   grid-area: bio;
 }
 
+/* Bio paragraphs a touch smaller than the page's base size */
+.bio p:not(.role) {
+  font-size: 1.15rem;
+}
+
 .profile-links {
   grid-area: links;
   list-style: none;
@@ -504,6 +509,10 @@ body {
 
   .portrait {
     width: 12rem;
+  }
+
+  .bio p:not(.role) {
+    font-size: 1.1rem;
   }
 
   .paper-story {
