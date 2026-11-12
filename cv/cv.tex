@@ -47,7 +47,9 @@
 \pretocmd{\section}{\needspace{5\baselineskip}}{}{}
 
 % ---------- Entry macros ----------
-% \entry{Bold heading}{Date}{Italic description (may be empty)}
+% \entry{Bold heading}{Date}{Italic role or degree line (may be empty)}
+% Italic is only for the role, degree, or place. A description of the work
+% goes upright: on the same line via \textup{...}, or as a paragraph below.
 \newcommand{\entry}[3]{%
   \par\noindent
   \begin{tabularx}{\linewidth}{@{}X@{\hspace{1.5em}}r@{}}
@@ -180,7 +182,7 @@ proofread and refined the manuscript.\par\vspace{2pt}
 \section{Service}
 
 \entry{\href{https://mtlaccountingphd.club}{\color{black}Montreal Accounting PhD Club}}{2025--present}
-  {Founding President. Organizes events for accounting doctoral students across Montréal's four business schools.}
+  {Founding President. \textup{Organizes events for accounting doctoral students across Montréal's four business schools.}}
 
 % ---------- Professional ----------
 \section{Professional and Volunteer Experience}
@@ -188,7 +190,7 @@ proofread and refined the manuscript.\par\vspace{2pt}
 \entry{Jarislowsky, Fraser Limited}{May 2022--Aug 2022}
   {Institutional Intern. Montreal, QC.}
 \entry{Great Power Geopolitics}{Apr 2022--May 2023}
-  {Founder. Independent publication on great-power geopolitics.}
+  {Founder. \textup{Independent publication on great-power geopolitics.}}
 \entry{Nature Simulation Systems}{2017--2020}
   {Patent Assistant. Montreal, QC.}
 \entry{CHU Sainte-Justine}{May 2015--Aug 2015}
