@@ -26,15 +26,13 @@
       document.documentElement.classList.add('reveal-ready');
     }
   </script>
-  <link rel="stylesheet" href="css/style.css?v=9"><!-- bump v when style.css changes, so browsers fetch the new one -->
+  <link rel="stylesheet" href="css/style.css?v=10"><!-- bump v when style.css changes, so browsers fetch the new one -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body>
 
-  <!-- Faint world map behind the top of the page (decorative) -->
-  <div class="world-map-wrap" aria-hidden="true"><div class="world-map"></div></div>
   <div class="dot-texture" aria-hidden="true"></div>
 
   <main>
@@ -72,6 +70,9 @@
             <li><span class="edu-degree">Honours B.Sc., Economics</span><span class="edu-school">Université de Montréal, 2022</span></li>          </ol>
         </div>
       </section>
+
+      <!-- Faint world map in the gap between the bio and the papers (decorative) -->
+      <div class="map-anchor" aria-hidden="true"><div class="world-map-wrap"><div class="world-map"></div></div></div>
 
       <!-- ============ WORKING PAPERS ============ -->
       <h2>Working Papers</h2>
@@ -130,21 +131,21 @@
   </footer>
 
   <script>
-    // Background map drifts up slowly as the page scrolls (a gentle parallax).
-    // DRIFT = how far it moves per pixel scrolled; 0 = fixed, 1 = moves with the page.
+    // Background map scrolls a little slower than the page (a gentle parallax).
+    // It sits exactly in its spot when the gap is mid-screen and lags slightly around that.
+    // LAG = how much slower it moves; 0 = moves with the page.
     // Skipped for visitors who ask their device to reduce motion.
     (function () {
-      var DRIFT = 0.18;
-      var map = document.querySelector('.world-map-wrap');
+      var LAG = 0.15;
+      var anchor = document.querySelector('.map-anchor');
+      var map = anchor && anchor.querySelector('.world-map-wrap');
       if (!map || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var ticking = false;
       function update() {
-        map.style.transform = 'translate3d(0,' + (-window.scrollY * DRIFT) + 'px,0)';
-        ticking = false;
+        var fromMiddle = anchor.getBoundingClientRect().top - window.innerHeight / 2;
+        map.style.transform = 'translate3d(0,' + (-fromMiddle * LAG) + 'px,0)';
       }
-      window.addEventListener('scroll', function () {
-        if (!ticking) { ticking = true; requestAnimationFrame(update); }
-      }, { passive: true });
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
       update();
     })();
 

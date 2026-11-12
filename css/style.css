@@ -117,24 +117,33 @@ main {
   padding: 4rem 0 4rem;
 }
 
-/* Faint dotted world map behind the top of the page, tilted back
-   like a map lying on a table seen from its bottom-left corner.
+/* Faint dotted world map in the gap between the bio and the papers,
+   tilted back like a map lying on a table seen from its bottom-left corner.
    opacity = strength; rotateX = how steeply it leans away;
    rotateZ = how much it turns (negative lifts the right side). */
+body {
+  overflow-x: clip; /* the map band is full window width; never let it cause sideways scrolling */
+}
+
+.map-anchor {
+  position: relative;
+  height: 0;
+  z-index: -1; /* behind the text */
+}
+
 .world-map-wrap {
-  position: fixed; /* stays on screen; a small script lets it drift as the page scrolls */
-  will-change: transform;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: absolute;
+  will-change: transform; /* a small script lets it lag slightly as the page scrolls */
+  top: -16rem; /* moves the whole map up or down; less negative = lower */
+  left: calc(50% - 50vw);
+  width: 100vw;
   height: 38rem;
   overflow: hidden;
   perspective: 1000px;
   perspective-origin: 50% 0%;
   pointer-events: none;
-  z-index: 0;
-  -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 30%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 30%, #000 70%, transparent 100%);
 }
 
 .world-map {
@@ -161,11 +170,11 @@ main {
   background-size: 16px 16px;
   opacity: 0.08;
   -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0, transparent 24rem, #000 40rem, #000 calc(100% - 28rem), transparent 100%),
+    linear-gradient(to bottom, transparent 0, transparent 44rem, #000 58rem, #000 calc(100% - 28rem), transparent 100%),
     linear-gradient(to right, #000 calc(50% - 30rem), rgba(0,0,0,0.3) calc(50% - 21rem), rgba(0,0,0,0.3) calc(50% + 21rem), #000 calc(50% + 30rem));
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to bottom, transparent 0, transparent 24rem, #000 40rem, #000 calc(100% - 28rem), transparent 100%),
+    linear-gradient(to bottom, transparent 0, transparent 44rem, #000 58rem, #000 calc(100% - 28rem), transparent 100%),
     linear-gradient(to right, #000 calc(50% - 30rem), rgba(0,0,0,0.3) calc(50% - 21rem), rgba(0,0,0,0.3) calc(50% + 21rem), #000 calc(50% + 30rem));
   mask-composite: intersect;
   pointer-events: none;
