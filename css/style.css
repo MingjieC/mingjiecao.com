@@ -207,7 +207,7 @@ body {
 }
 
 .edu-label {
-  font-size: 0.7rem;
+  font-size: 0.8rem; /* same as the section headings (h2) */
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -334,20 +334,6 @@ body {
   line-height: 1.5;
 }
 
-.notice {
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  line-height: 1.55;
-  background: var(--accent-soft);
-  border-left: 3px solid var(--accent);
-  padding: 0.85rem 1rem;
-  border-radius: 0 4px 4px 0;
-  margin: 1.5rem 0;
-}
-
-.notice p:last-child {
-  margin-bottom: 0;
-}
 
 
 /* ---------- Papers ---------- */
@@ -379,24 +365,23 @@ body {
 
 .paper-authorship {
   font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 500;
+  font-size: 0.85rem; /* same as .paper-meta: both are gray details about the paper */
+  font-weight: 400;
   color: var(--muted);
   white-space: nowrap;
 }
 
 /* Plain-language story behind each paper (research page) */
 .paper-story {
-  font-size: 1.1rem;
+  font-size: 1.15rem; /* same as the bio */
   line-height: 1.6;
   margin: 0.4rem 0 0.75rem;
   padding-left: 1.5rem; /* indent the story under the title */
 }
 
-/* Small italic cue at the top of each story, marking it as my own explanation */
+/* Italic cue at the top of each story, marking it as my own explanation (same size as the story) */
 .paper-story .story-cue {
   font-style: italic;
-  font-size: 1.15rem;
   color: var(--accent);
   margin-bottom: 0.35rem;
 }
@@ -411,25 +396,12 @@ body {
 
 .paper-meta {
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--muted);
   margin: 0 0 0.6rem;
   line-height: 1.5;
 }
 
-.tag {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  background: var(--accent-soft);
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  margin-bottom: 0.5rem;
-}
 
 .paper-links {
   display: flex;
@@ -487,7 +459,6 @@ body {
 }
 
 
-/* Closing note pointing to the CV */
 /* ---------- Talk photo (after the papers) ---------- */
 
 .talk-photo {
@@ -503,47 +474,12 @@ body {
   background: var(--accent-soft);
 }
 
+/* Closing note pointing to the CV */
 .cv-note {
-  font-family: var(--font-sans);
-  font-size: 1.08rem;
+  font-size: 1.15rem; /* a sentence, so serif at the same size as the bio */
   color: var(--text);
   text-align: center;
   margin: 0;
-}
-
-/* ---------- Simple lists (conferences, etc.) ---------- */
-
-.entry-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.entry-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-
-.entry-list li:last-child {
-  border-bottom: 0;
-}
-
-.entry-list .when {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--muted);
-  white-space: nowrap;
-  padding-top: 0.2rem;
-}
-
-.entry-list .detail {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--muted);
 }
 
 /* ---------- Footer ---------- */
@@ -671,14 +607,11 @@ body {
 
   .paper-story {
     padding-left: 1rem;
+    font-size: 1.1rem; /* same as the bio on phones */
   }
 
-  .entry-list li {
-    flex-direction: column;
-    gap: 0.1rem;
+  .cv-note {
+    font-size: 1.1rem; /* same as the bio on phones */
   }
 
-  .entry-list .when {
-    padding-top: 0;
-  }
 }
