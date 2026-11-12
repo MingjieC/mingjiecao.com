@@ -363,6 +363,11 @@ body {
   margin-bottom: 0;
 }
 
+/* Last paper before the next section heading: the heading's own line separates them */
+.paper:has(+ h2) {
+  border-bottom: 0;
+}
+
 .paper-title a {
   color: var(--text);
   text-decoration: none;
