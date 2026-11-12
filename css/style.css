@@ -409,13 +409,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Short summary of a work in progress (no story, abstract or PDF yet) */
-.paper-summary {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0.4rem 0 0;
-}
-
 .paper-meta {
   font-family: var(--font-sans);
   font-size: 0.88rem;
