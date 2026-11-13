@@ -14,6 +14,9 @@
   --accent-soft: #e8eef7;
   --rule: #e2e0db;
 
+  /* Always light, even when the device is in dark mode */
+  color-scheme: light;
+
   /* Type */
   --font-serif: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
   --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -21,18 +24,6 @@
   /* Layout */
   --measure: 46rem;
   --gutter: 1.25rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #15171a;
-    --surface: #1c1f23;
-    --text: #e7e5e0;
-    --muted: #9ba1ab;
-    --accent: #93b4e6;
-    --accent-soft: #1f2a3a;
-    --rule: #2c3036;
-  }
 }
 
 /* ---------- Base ---------- */
