@@ -6,4 +6,5 @@ mkdir -p build
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build cv.tex >/dev/null
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build cv.tex >/dev/null
 cp build/cv.pdf ../files/Mingjie_Cao_CV.pdf
+python3 strip_pdf_metadata.py ../files/Mingjie_Cao_CV.pdf
 echo "Built files/Mingjie_Cao_CV.pdf"
