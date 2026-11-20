@@ -44,7 +44,9 @@
   [{\color{rule}\vspace{-6pt}\rule{\linewidth}{0.5pt}}]
 \titlespacing*{\section}{0pt}{9pt}{4pt}
 % Never leave a section heading alone at the bottom of a page
-\pretocmd{\section}{\needspace{5\baselineskip}}{}{}
+% (strict \Needspace: the loose \needspace can push a whole section to the next page)
+\newcommand{\keepheading}{\Needspace{5\baselineskip}}
+\pretocmd{\section}{\keepheading}{}{}
 
 % ---------- Entry macros ----------
 % \entry{Bold heading}{Date}{Italic role or degree line (may be empty)}
@@ -120,6 +122,10 @@
 \vspace{2pt}
 \textbf{Work in progress}\par\vspace{3pt}
 \paper[sole-authored]{Who Sets the Materiality Line? Regulatory Stance and the Labeling of Accounting Errors}
+  {}
+  {}
+
+\paper[sole-authored]{Disclosing to a Divided Audience: Conflicting Political Pressures and Sensitive Topics}
   {}
   {}
 
@@ -201,7 +207,7 @@ proofread and refined the manuscript.\par\vspace{2pt}
 
 % ---------- Languages ----------
 % Short last section: no extra keep-together space needed
-\renewcommand{\needspace}[1]{\Needspace{3\baselineskip}}
+\renewcommand{\keepheading}{\Needspace{3\baselineskip}}
 \section{Languages}
 
 English and French (native or bilingual); Mandarin Chinese (professional working proficiency).
